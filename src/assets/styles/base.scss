@@ -1,0 +1,19 @@
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  font-size: calc(100vw / 375 * 37.5); // 基准1rem = 37.5px => 100vh/375 = 1rem/37.5
+}
+
+#root {
+  height: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px; // 最大宽度font-size: 50px
+  }
+}
