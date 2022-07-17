@@ -1,0 +1,14 @@
+.header {
+  font-size: $font-size-large;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .right {
+    font-size: $font-size-large-x;
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
