@@ -3,15 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Grid, Space } from '@taoyage/react-mobile-ui';
 
 import { BookCover } from '@/components';
-
-import { useHomeData } from '@/pages/home/useRequest';
+import useRequest from '@/hooks/useRequest';
 import { px2rem } from '@/utils/unit';
+
+import api from '@/pages/home/api';
+import { IHomeData } from '@/pages/home/types';
 
 import styles from './index.module.scss';
 
 const Recommend: React.FC = React.memo(() => {
   const navigate = useNavigate();
-  const { data } = useHomeData();
+  const { data } = useRequest<IHomeData>({ url: api.getHomeData });
 
   const renderContent = React.useMemo(() => {
     return data?.recommend.map((book) => (

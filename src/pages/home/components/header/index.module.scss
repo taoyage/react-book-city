@@ -1,12 +1,12 @@
 .header {
-  font-size: $font-size-large;
-  padding: 10px 0;
+  font-size: var(--ygm-font-size-xl);
+  padding: var(--ygm-padding-m) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   .right {
-    font-size: $font-size-large-x;
+    font-size: var(--ygm-font-size-xxxl);
     width: 50px;
     display: flex;
     justify-content: space-between;

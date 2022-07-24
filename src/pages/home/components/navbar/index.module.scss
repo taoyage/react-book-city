@@ -1,10 +1,9 @@
 .navbar {
   position: relative;
   display: flex;
-  width: 100%;
-  display: flex;
   justify-content: space-between;
   font-size: $font-size-medium;
+  padding: 0 var(--ygm-padding-s);
 
   .item {
     position: relative;

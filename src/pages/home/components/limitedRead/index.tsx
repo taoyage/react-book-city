@@ -3,20 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { Countdown, Card, Grid, Space } from '@taoyage/react-mobile-ui';
 
 import { BookCover } from '@/components';
+import useRequest from '@/hooks/useRequest';
 
-import { useHomeData } from '@/pages/home/useRequest';
+import { IHomeData } from '@/pages/home/types';
+import api from '@/pages/home/api';
 
 import { px2rem } from '@/utils/unit';
 
 import styles from './index.module.scss';
 
-export interface IHomeData {
-  limited: any;
-}
-
 const LimitedRead: React.FC = React.memo(() => {
   const navigate = useNavigate();
-  const { data } = useHomeData();
+  const { data } = useRequest<IHomeData>({ url: api.getHomeData });
 
   const time = 1000 * 60 * 60 * 30 + 3000;
 

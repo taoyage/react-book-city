@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Space, Grid } from '@taoyage/react-mobile-ui';
 
 import { BookCover } from '@/components';
+import useRequest from '@/hooks/useRequest';
 
-import { useHomeData } from '@/pages/home/useRequest';
+import { IHomeData } from '@/pages/home/types';
+import api from '@/pages/home/api';
 
 import { px2rem } from '@/utils/unit';
 
@@ -12,7 +14,7 @@ import styles from './index.module.scss';
 
 const Popular: React.FC = React.memo(() => {
   const navigate = useNavigate();
-  const { data } = useHomeData();
+  const { data } = useRequest<IHomeData>({ url: api.getHomeData });
 
   const renderContent = React.useMemo(() => {
     return data?.popular.map((book) => (

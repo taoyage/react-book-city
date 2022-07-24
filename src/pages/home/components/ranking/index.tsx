@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Tabs, Grid, Space } from '@taoyage/react-mobile-ui';
 
 import { BookCover } from '@/components';
+import useRequest from '@/hooks/useRequest';
 
-import { useHomeData } from '@/pages/home/useRequest';
-import { IRaking } from '@/pages/home/types';
+import api from '@/pages/home/api';
+import { IRaking, IHomeData } from '@/pages/home/types';
 
 import { px2rem } from '@/utils/unit';
 
@@ -13,7 +14,7 @@ import styles from './index.module.scss';
 
 const Ranking: React.FC = React.memo(() => {
   const navigate = useNavigate();
-  const { data } = useHomeData();
+  const { data } = useRequest<IHomeData>({ url: api.getHomeData });
 
   const renderList = React.useCallback(
     (rank: IRaking) => {

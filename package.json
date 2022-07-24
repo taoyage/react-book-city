@@ -9,7 +9,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@taoyage/react-mobile-ui": "^1.1.4",
+    "@taoyage/react-mobile-ui": "^1.1.11",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "react": "^18.2.0",
@@ -18,7 +18,7 @@
     "swr": "^1.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.6",
+    "@babel/core": "^7.18.9",
     "@commitlint/cli": "^17.0.3",
     "@taoyage/configs": "^1.3.1",
     "@types/react": "^18.0.15",
@@ -28,10 +28,10 @@
     "husky": "^8.0.1",
     "postcss": "^8.4.14",
     "postcss-pxtorem": "^6.0.0",
-    "sass": "^1.53.0",
+    "sass": "^1.54.0",
     "typescript": "^4.7.4",
-    "vite": "^3.0.0",
+    "vite": "^3.0.2",
     "vite-plugin-import": "^0.4.0",
-    "vite-plugin-svgr": "^2.2.0"
+    "vite-plugin-svgr": "^2.2.1"
   }
 }
