@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Grid, Space } from '@taoyage/react-mobile-ui';
 
 import { BookCover } from '@/components';
-import useRequest from '@/hooks/useRequest';
+import useRequest from '@/hooks/useRequest/useRequest';
 import { px2rem } from '@/utils/unit';
 
 import api from '@/pages/home/api';

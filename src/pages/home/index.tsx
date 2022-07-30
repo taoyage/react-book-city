@@ -11,7 +11,7 @@ import Recommend from '@/pages/home/components/recommend';
 import { IHomeData } from '@/pages/home/types';
 import api from '@/pages/home/api';
 
-import useRequest from '@/hooks/useRequest';
+import useRequest from '@/hooks/useRequest/useRequest';
 import { px2rem } from '@/utils/unit';
 
 import styles from './index.module.scss';
