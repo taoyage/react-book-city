@@ -18,7 +18,9 @@ const Category: React.FC = React.memo(() => {
     navigate(-1);
   }, []);
 
-  const onCategoryItem = React.useCallback(() => {}, []);
+  const onCategoryItem = React.useCallback((key: string) => {
+    navigate(`/book-list/${key}`);
+  }, []);
 
   if (error) {
     return <ErrorBlock />;
@@ -34,14 +36,14 @@ const Category: React.FC = React.memo(() => {
       <div className={styles.categoryContent}>
         <Grid columns={2} gap={16}>
           {data?.map((category) => (
-            <Grid.Item span={1} key={category.name} onClick={onCategoryItem}>
+            <Grid.Item span={1} key={category.id} onClick={() => onCategoryItem(category.id)}>
               <div className={styles.categoryItem}>
                 <Space gap={px2rem(12)}>
                   <div className={styles.bookCover}>
                     <BookCover
-                      src={`http://localhost:8001${category.bookCover}`}
+                      src={category.bookCover}
                       alt={category.name}
-                      style={{ '--height': px2rem(51), width: px2rem(40) }}
+                      style={{ '--height': px2rem(51), '--width': px2rem(40) }}
                     />
                   </div>
                   <Space direction="vertical">

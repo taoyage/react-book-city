@@ -1,4 +1,10 @@
 .ranking {
   height: 100%;
   background-color: #fff;
+  overflow: hidden;
+
+  .content {
+    height: calc(100vh - 45px);
+    overflow: hidden;
+  }
 }

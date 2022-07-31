@@ -17,6 +17,13 @@ export default defineConfig({
   ],
   server: {
     host: '0.0.0.0',
+    proxy: {
+      // 代理所有`/api`的请求
+      '/api': {
+        target: 'http://localhost:8001',
+        changeOrigin: true,
+      },
+    },
   },
   resolve: {
     alias: {
