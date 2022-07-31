@@ -30,7 +30,7 @@ const Recommend: React.FC = React.memo(() => {
   }, [data?.recommend, navigate]);
 
   const onHeaderClick = React.useCallback(() => {
-    navigate('/recommend');
+    navigate('/book-list/recommend');
   }, [navigate]);
 
   return (

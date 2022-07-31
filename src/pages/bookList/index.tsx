@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { NavBar, Grid, Space, ErrorBlock, InfiniteScroll } from '@taoyage/react-mobile-ui';
 
 import { BookCover, Loading } from '@/components';
@@ -15,12 +15,10 @@ import styles from './index.module.scss';
 
 const BookList: React.FC = React.memo(() => {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  const pathname = location.pathname.slice(1) as TPageKey;
+  const pageKey = useParams().key as TPageKey;
 
   const { data, error, size, setSize, isValidating } = useInfiniteRequest<IBookListData>({
-    url: api.getBookList(pathname),
+    url: api.getBookList(pageKey),
   });
 
   const hasMore = React.useMemo(() => !data?.slice(-1).pop()?.isLast, [data]);
@@ -30,7 +28,11 @@ const BookList: React.FC = React.memo(() => {
     await setSize(size + 1);
   };
 
-  if (error) {
+  const onBack = () => {
+    navigate(-1);
+  };
+
+  if (error || !TITLE_KEY_MAP[pageKey]) {
     return <ErrorBlock />;
   }
 
@@ -38,19 +40,15 @@ const BookList: React.FC = React.memo(() => {
     return <Loading />;
   }
 
-  const onBack = () => {
-    navigate('/');
-  };
-
   return (
     <div className={styles.bookList}>
-      <NavBar onBack={onBack}>{TITLE_KEY_MAP[pathname]}</NavBar>
+      <NavBar onBack={onBack}>{TITLE_KEY_MAP[pageKey]}</NavBar>
       <div className={styles.content}>
         <InfiniteScroll hasMore={hasMore} loadMore={loadMore}>
           <Grid columns={1} gap={px2rem(24)}>
             {data.map((item) => {
               return item.bookList.map((book) => (
-                <Grid.Item key={book.bookId} onClick={() => navigate(`/book/${book.bookId}`)}>
+                <Grid.Item key={book.bookId}>
                   <Space gap={px2rem(12)}>
                     <BookCover src={book.coverImg} alt={book.title} />
                     <Space direction="vertical" justify="between" gap={px2rem(12)}>

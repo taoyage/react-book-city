@@ -34,7 +34,7 @@ const Popular: React.FC = React.memo(() => {
   }, [data?.popular, navigate]);
 
   const onHeaderClick = React.useCallback(() => {
-    navigate('/popular');
+    navigate('/book-list/popular');
   }, [navigate]);
 
   return (

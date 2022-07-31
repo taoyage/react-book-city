@@ -17,14 +17,14 @@ const Navbar: React.FC = React.memo(() => {
       </Link>
 
       <div className={styles.item}>
-        <Link to="/ranking" className={styles.icon}>
+        <Link to="/category" className={styles.icon}>
           <img src={Rank} alt="rank" width="100%" />
         </Link>
         <h3 className={styles.title}>分类</h3>
       </div>
 
       <div className={styles.item}>
-        <Link to="/finish" className={styles.icon}>
+        <Link to="/book-list/finish" className={styles.icon}>
           <img src={Category} alt="category" width="100%" />
         </Link>
         <h3 className={styles.title}>完本</h3>
