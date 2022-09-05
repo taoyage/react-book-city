@@ -1,6 +1,6 @@
 import { IBookInfo } from '@/types/book';
 
-export interface IRaking {
+export interface IRanking {
   id: string;
   title: string;
   books: IBookInfo[];
@@ -15,6 +15,6 @@ export interface IHomeData {
   banner: Ibanner[];
   limited: IBookInfo[];
   popular: IBookInfo[];
-  ranking: IRaking[];
+  ranking: IRanking[];
   recommend: IBookInfo[];
 }

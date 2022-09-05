@@ -1,5 +1,5 @@
-import { Reducer, combineReducers, AnyAction, CombinedState } from '@reduxjs/toolkit';
-import { IReducers, AppState } from '@/store/types';
+import { combineReducers, AnyAction } from '@reduxjs/toolkit';
+import { IReducers } from '@/store/configStore';
 
 const createReducerManager = (initialReducers: IReducers) => {
   const reducers = { ...initialReducers };
@@ -10,12 +10,12 @@ const createReducerManager = (initialReducers: IReducers) => {
   return {
     // 获取所有reducer
     getReducers: () => reducers,
-    reduce: (state: AppState, action: AnyAction) => {
+    reduce: (state: any, action: AnyAction) => {
       let newState = state;
       if (keysToRemove.length > 0) {
         newState = { ...state };
         for (let key of keysToRemove) {
-          delete state[key];
+          delete newState[key];
         }
         keysToRemove = [];
       }
@@ -24,11 +24,7 @@ const createReducerManager = (initialReducers: IReducers) => {
     // 添加新的reducer
     addReducers: (newReducers: IReducers) => {
       Object.keys(newReducers).forEach((key: string) => {
-        if (reducers[key]) {
-          console.warn(
-            `A duplicated reducer ${key} has alreay been combined! Please confirm whether to reuse the same reducer ${key}!`
-          );
-        } else {
+        if (!key || !reducers[key]) {
           reducers[key] = newReducers[key];
         }
       });
@@ -37,8 +33,9 @@ const createReducerManager = (initialReducers: IReducers) => {
     // 删除reducer
     removeReducers: (keys: string[]) => {
       keys.forEach((key) => {
-        if (reducers[key]) {
+        if (key && reducers[key]) {
           delete reducers[key];
+          keysToRemove.push(key);
         }
       });
       rootReducers = combineReducers(reducers);

@@ -13,7 +13,7 @@ export const rankingActions: IRankingAction = {
   setSideKey: createAction('INIT'),
 };
 
-const createReducer = (key: string) => {
+export const createReducer = (key: string) => {
   const { set: setTabKey, reducer: activeTabKey } = createTempSlice<string>('activeTabKey', TAB_DEFAULT_KEY, key);
   const { set: setSideKey, reducer: activeSideKey } = createTempSlice<string>('activeSideKey', '', key);
 
@@ -29,5 +29,3 @@ const createReducer = (key: string) => {
     },
   };
 };
-
-export default createReducer;

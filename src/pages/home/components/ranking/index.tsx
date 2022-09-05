@@ -6,7 +6,7 @@ import { BookCover } from '@/components';
 import useRequest from '@/hooks/useRequest/useRequest';
 
 import api from '@/pages/home/api';
-import { IRaking, IHomeData } from '@/pages/home/types';
+import { IRanking, IHomeData } from '@/pages/home/types';
 
 import { px2rem } from '@/utils/unit';
 
@@ -17,7 +17,7 @@ const Ranking: React.FC = React.memo(() => {
   const { data } = useRequest<IHomeData>({ url: api.getHomeData });
 
   const renderList = React.useCallback(
-    (rank: IRaking) => {
+    (rank: IRanking) => {
       return rank.books.map((book) => (
         <React.Fragment key={book.bookId}>
           <Grid.Item onClick={() => navigate(`/book/${book.bookId}`)}>
@@ -49,9 +49,19 @@ const Ranking: React.FC = React.memo(() => {
     ));
   }, [data?.ranking, renderList]);
 
+  const onHeaderClick = React.useCallback(() => {
+    navigate('/ranking');
+  }, [navigate]);
+
   return (
     <div className={styles.ranking}>
-      <Card title="排行榜" extra="更多" titleClassName={styles.title} headerClassName={styles.header}>
+      <Card
+        title="排行榜"
+        extra="更多"
+        titleClassName={styles.title}
+        headerClassName={styles.header}
+        onHeaderClick={onHeaderClick}
+      >
         <Tabs
           activeKey="1"
           showTabLine={false}

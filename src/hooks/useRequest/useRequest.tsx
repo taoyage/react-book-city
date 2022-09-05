@@ -31,7 +31,7 @@ function useRequest<Data = unknown, Error = unknown>(
     error,
     isValidating,
     mutate,
-  } = useSWR<Response<Data>, AxiosError<Error>>(request, () => AxiosInstance.request(request), {
+  } = useSWR<Response<Data>, AxiosError<Error>>(request.url, () => AxiosInstance.request(request), {
     ...config,
   });
 

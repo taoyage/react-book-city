@@ -5,8 +5,10 @@ import { Loading } from '@/components';
 import { useReducer } from '@/store';
 import { useRequest } from '@/hooks/useRequest';
 
-import Header from '@/pages/ranking/components/header';
-import createReducer from '@/pages/ranking/store';
+import RankingHeader from '@/pages/ranking/components/header';
+import RankingContent from '@/pages/ranking/components/content';
+
+import { createReducer } from '@/pages/ranking/store';
 import api from '@/pages/ranking/api';
 
 import styles from './index.module.scss';
@@ -26,16 +28,8 @@ const Ranking: React.FC = React.memo(() => {
 
   return (
     <div className={styles.ranking}>
-      <Header />
-      <div className={styles.content}>
-        {/* <Sidebar activeKey={activeSideKey}>
-          {data[activeTabKey].map((item) => (
-            <Sidebar.Item key={item.key} title={item.shortTitle}>
-              {item.shortTitle}
-            </Sidebar.Item>
-          ))}
-        </Sidebar> */}
-      </div>
+      <RankingHeader />
+      <RankingContent />
     </div>
   );
 });

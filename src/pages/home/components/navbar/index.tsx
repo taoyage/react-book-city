@@ -31,10 +31,10 @@ const Navbar: React.FC = React.memo(() => {
       </div>
 
       <div className={styles.item}>
-        <Link to="/ranking" className={styles.icon}>
+        <Link to="/book-list/recommend" className={styles.icon}>
           <img src={Rank} alt="rank" width="100%" />
         </Link>
-        <h3 className={styles.title}>专题</h3>
+        <h3 className={styles.title}>推荐</h3>
       </div>
     </div>
   );

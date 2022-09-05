@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import { store } from '@/store';
-import { AppState, AppDispatch } from '@/store/types';
+import { AppState, AppDispatch } from '@/store/store';
 
 export const useReducer = (reducers: {}) => {
   const dispatch = useAppDispatch();
@@ -12,7 +12,7 @@ export const useReducer = (reducers: {}) => {
     return () => {
       store.reducerManager.removeReducers(Object.keys(reducers));
     };
-  }, [reducers]);
+  }, [reducers, dispatch]);
 };
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();

@@ -1,8 +1,14 @@
 import { Middleware } from '@reduxjs/toolkit';
 import configStore from '@/store/configStore';
+import counterReducer from '@/store/slices/counterSlice';
 
 const middlewares: Middleware[] = [];
 
-const rootReducers = {};
+const rootReducers = {
+  counter: counterReducer,
+};
 
 export const store = configStore(rootReducers, middlewares);
+
+export type AppState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
