@@ -51,6 +51,10 @@ const Router: React.FC = React.memo(() => {
       element: <Detail />,
     },
     {
+      path: '/book/:bookId/:chapterId',
+      element: <Chapter />,
+    },
+    {
       path: '*',
       element: <Navigate to="/" />,
     },

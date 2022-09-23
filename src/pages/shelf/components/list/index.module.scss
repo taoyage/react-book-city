@@ -1,7 +1,5 @@
-.recommend {
-  .header {
-    background: linear-gradient(180deg, #c5f4f3 0%, rgba(255, 246, 232, 0) 61.54%);
-  }
+.list {
+  padding: 16px;
 
   .author {
     font-size: var(--ygm-font-size-s);
@@ -14,11 +12,5 @@
     margin-top: 5px;
     font-size: var(--ygm-font-size-m);
     @include wrap(2);
-  }
-
-  .bookCover {
-    width: 69px;
-    height: 95px;
-    border-radius: 5px;
   }
 }

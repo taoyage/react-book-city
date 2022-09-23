@@ -5,5 +5,16 @@ export interface IBookInfo {
   coverImg: string;
   desc: string;
   title: string;
-  word: string;
+  wordCount?: number;
+  isSerial?: boolean;
+  minorCate?: string;
+  chapters?: string[];
+  chapterInfo?: IChapterInfo;
+}
+
+export interface IChapterInfo {
+  chapterId: string;
+  chapterIndex: number;
+  chapterName: string;
+  content: string[];
 }

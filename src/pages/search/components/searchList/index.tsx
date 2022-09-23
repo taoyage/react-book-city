@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cx from 'classnames';
 import { parse } from 'query-string';
 import { ErrorBlock, Grid, Space } from '@taoyage/react-mobile-ui';
@@ -29,12 +29,22 @@ const SearchList: React.FC = React.memo(() => {
     }
   }, [mutate, searchKeyword]);
 
+  React.useEffect(() => {
+    return () => {
+      console.log(123);
+    };
+  }, []);
+
   if (error && searchMode) {
     return <ErrorBlock />;
   }
 
   if (!data && searchMode) {
     return <Loading />;
+  }
+
+  if (!data?.length) {
+    return <div>empty</div>;
   }
 
   return (
