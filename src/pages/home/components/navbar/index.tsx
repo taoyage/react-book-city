@@ -13,7 +13,7 @@ const Navbar: React.FC = React.memo(() => {
     <div className={styles.navbar}>
       <Link to="/ranking">
         <div className={styles.item}>
-          <Link to="/category" className={styles.icon}>
+          <Link to="/ranking" className={styles.icon}>
             <img src={Rank} alt="rank" width="100%" />
           </Link>
           <h3 className={styles.title}>排行</h3>
