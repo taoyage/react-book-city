@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRoutes, Navigate } from 'react-router-dom';
-import { Loading } from '@/components';
+// import { Loading } from '@/components';
 
 import Home from '@/pages/home';
 import Detail from '@/pages/detail';

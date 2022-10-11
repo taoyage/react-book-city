@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import cx from 'classnames';
-import { parse } from 'query-string';
 import { ErrorBlock, Grid, Space } from '@taoyage/react-mobile-ui';
 
 import api from '@/pages/search/api';

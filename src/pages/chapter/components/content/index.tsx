@@ -21,7 +21,7 @@ const ChapterContent: React.FC = React.memo(() => {
   const fontSize = useAppSelector<number>((state) => state.chapter.fontSize);
   const nightTheme = useAppSelector<boolean>((state) => state.chapter.nightTheme);
 
-  const { data, error, size, setSize, isValidating } = useInfiniteRequest<IChapterInfo[]>({
+  const { data } = useInfiniteRequest<IChapterInfo[]>({
     url: api.getChapter(bookId as string, chapterId as string),
   });
 

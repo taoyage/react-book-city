@@ -1,7 +1,7 @@
 import React from 'react';
 import { Popup } from '@taoyage/react-mobile-ui';
 
-import { useAppDispatch, useAppSelector } from '@/store';
+import { useAppSelector } from '@/store';
 
 import styles from './index.module.scss';
 

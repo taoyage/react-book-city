@@ -15,7 +15,7 @@ import { useInfiniteRequest } from '@/hooks/useRequest';
 
 const Chapter: React.FC = React.memo(() => {
   const { bookId, chapterId } = useParams();
-  const { data, error, size, setSize, isValidating } = useInfiniteRequest<IChapterInfo>({
+  const { data, error } = useInfiniteRequest<IChapterInfo>({
     url: api.getChapter(bookId as string, chapterId as string),
   });
 

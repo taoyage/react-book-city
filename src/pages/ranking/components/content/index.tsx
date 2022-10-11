@@ -3,7 +3,7 @@ import { Sidebar } from '@taoyage/react-mobile-ui';
 
 import BookList from '@/pages/ranking/components/booklist';
 
-import { useAppSelector, AppState, useAppDispatch } from '@/store';
+import { useAppSelector, AppState } from '@/store';
 import { useRequest } from '@/hooks/useRequest';
 
 import { TAB_DEFAULT_KEY } from '@/pages/ranking/constants';
@@ -12,7 +12,7 @@ import api from '@/pages/ranking/api';
 
 import styles from './index.module.scss';
 
-const RankingContent: React.FC = React.memo((props) => {
+const RankingContent: React.FC = React.memo(() => {
   const { data } = useRequest<IRanking>({ url: api.ranking });
   const selectedTabKey = useAppSelector<'male' | 'female'>((state: AppState) => state.ranking.activeTabKey);
   const [activeKey, setActiveKey] = React.useState<string>(data![TAB_DEFAULT_KEY][0].key);

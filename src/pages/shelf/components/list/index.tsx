@@ -13,7 +13,7 @@ import styles from './index.module.scss';
 const List: React.FC = React.memo(() => {
   const navigate = useNavigate();
 
-  const [list, setList] = React.useState<IBookInfo[]>(getShelfList());
+  const [list, _] = React.useState<IBookInfo[]>(getShelfList());
 
   const renderContent = () => {
     return list.map((book) => (
