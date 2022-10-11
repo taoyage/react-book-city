@@ -14,6 +14,10 @@ export default defineConfig({
         target: 'http://localhost:8001',
         changeOrigin: true,
       },
+      '/public': {
+        target: 'http://106.14.223.52',
+        changeOrigin: true,
+      },
     },
   },
   resolve: {

@@ -5,6 +5,8 @@ import { NavBar } from '@taoyage/react-mobile-ui';
 import { shelfActions } from '@/pages/shelf/store';
 import { useAppDispatch, useAppSelector } from '@/store';
 
+import styles from './index.module.scss';
+
 const Header: React.FC = React.memo(() => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -19,7 +21,14 @@ const Header: React.FC = React.memo(() => {
   };
 
   return (
-    <NavBar onBack={onBack} right={<div onClick={onEdit}>{editMode ? '完成' : '编辑'}</div>}>
+    <NavBar
+      onBack={onBack}
+      right={
+        <div className={styles.right} onClick={onEdit}>
+          {editMode ? '完成' : '编辑'}
+        </div>
+      }
+    >
       我的书架
     </NavBar>
   );

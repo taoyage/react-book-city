@@ -42,10 +42,6 @@ const SearchList: React.FC = React.memo(() => {
     return <Loading />;
   }
 
-  if (!data?.length) {
-    return <div>empty</div>;
-  }
-
   return (
     <div className={cx(styles.searchList, { [styles.hidden]: !searchMode })}>
       <Grid columns={1} gap={px2rem(24)}>
