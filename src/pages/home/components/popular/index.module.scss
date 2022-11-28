@@ -10,14 +10,14 @@
 
   .meta {
     font-size: $font-size-small;
-    color: #a1aab3;
+    color: #969ba3;
     @include no-wrap();
   }
 
   .desc {
     font-size: $font-size-medium;
     line-height: 18px;
-    color: #a1aab3;
+    color: #969ba3;
     @include wrap(2);
     margin-bottom: 7px;
   }

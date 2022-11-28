@@ -11,7 +11,7 @@ export default defineConfig({
     proxy: {
       // 代理所有`/api`的请求
       '/api': {
-        target: 'http://localhost:8001',
+        target: 'http://106.14.223.52',
         changeOrigin: true,
       },
       '/public': {

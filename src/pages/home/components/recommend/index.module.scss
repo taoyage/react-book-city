@@ -15,10 +15,4 @@
     font-size: var(--ygm-font-size-m);
     @include wrap(2);
   }
-
-  .bookCover {
-    width: 69px;
-    height: 95px;
-    border-radius: 5px;
-  }
 }

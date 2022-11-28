@@ -11,14 +11,12 @@ import styles from './index.module.scss';
 const Navbar: React.FC = React.memo(() => {
   return (
     <div className={styles.navbar}>
-      <Link to="/ranking">
-        <div className={styles.item}>
-          <Link to="/ranking" className={styles.icon}>
-            <img src={Rank} alt="rank" width="100%" />
-          </Link>
-          <h3 className={styles.title}>排行</h3>
-        </div>
-      </Link>
+      <div className={styles.item}>
+        <Link to="/ranking" className={styles.icon}>
+          <img src={Rank} alt="rank" width="100%" />
+        </Link>
+        <h3 className={styles.title}>排行</h3>
+      </div>
 
       <div className={styles.item}>
         <Link to="/category" className={styles.icon}>

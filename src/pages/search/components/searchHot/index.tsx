@@ -1,22 +1,32 @@
 import React from 'react';
 import cx from 'classnames';
-import { Link } from 'react-router-dom';
-
 import { Space } from '@taoyage/react-mobile-ui';
 
-import api from '@/pages/search/api';
-
 import useRequest from '@/hooks/useRequest/useRequest';
+
+import api from '@/pages/search/api';
+import { searchActions } from '@/pages/search/store';
+import { setHistory } from '@/pages/search/utils';
+
+import { setUrlParams } from '@/utils/url';
 import { px2rem } from '@/utils/unit';
-import { useAppSelector } from '@/store';
+import { useAppSelector, useAppDispatch } from '@/store';
 
 import styles from './index.module.scss';
 
 const SearchHot: React.FC = React.memo(() => {
+  const dispatch = useAppDispatch();
+
   const searchMode = useAppSelector<boolean>((state) => state.search.searchMode);
   const { data, error } = useRequest<String[]>({ url: api.getHotSearch });
 
-  const onSearch = () => {};
+  const onSearch = (e: React.MouseEvent) => {
+    const keyword = (e.target as HTMLElement).dataset['keyword'] as string;
+    setHistory(keyword);
+    dispatch(searchActions.setSearchMode(true));
+    setUrlParams([['keyword', keyword]], '/search');
+    dispatch(searchActions.setSearchKeyword(keyword));
+  };
 
   if (!data || error) {
     return null;
@@ -28,9 +38,9 @@ const SearchHot: React.FC = React.memo(() => {
       <div className={styles.searchTags}>
         <Space wrap gap={[px2rem(20), px2rem(10)]}>
           {data.map((item, index) => (
-            <Link key={index} to="/" className={styles.tag} onClick={onSearch}>
+            <div key={index} data-keyword={item} className={styles.tag} onClick={onSearch}>
               {item}
-            </Link>
+            </div>
           ))}
         </Space>
       </div>

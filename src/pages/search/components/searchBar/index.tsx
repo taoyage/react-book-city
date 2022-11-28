@@ -18,7 +18,6 @@ const BookSearchBar: React.FC = React.memo(() => {
   const onSearch = (value: string) => {
     if (!value) return;
     setHistory(value);
-    dispatch(searchActions.setSearchMode(true));
     setUrlParams([['keyword', value]], '/search');
     dispatch(searchActions.setSearchKeyword(value));
   };
@@ -46,22 +45,21 @@ const BookSearchBar: React.FC = React.memo(() => {
   React.useEffect(() => {
     if (searchKeyword) {
       dispatch(searchActions.setSearchMode(true));
+      searchRef.current?.setValue(searchKeyword);
     }
-  }, []);
+  }, [searchKeyword, dispatch]);
 
   return (
-    <div>
-      <SearchBar
-        value={searchKeyword}
-        placeholder="搜索书籍、作者"
-        ref={searchRef}
-        showCancel
-        onSearch={onSearch}
-        onCancel={onCancel}
-        onClear={onClear}
-        onChange={onChange}
-      />
-    </div>
+    <SearchBar
+      value={searchKeyword}
+      placeholder="搜索书籍、作者"
+      ref={searchRef}
+      showCancel
+      onSearch={onSearch}
+      onCancel={onCancel}
+      onClear={onClear}
+      onChange={onChange}
+    />
   );
 });
 

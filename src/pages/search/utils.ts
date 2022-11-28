@@ -17,9 +17,8 @@ export const clearHistory = () => {
 export const deleteHistory = (val: string) => {
   const arr = storage.get(HISTORY_SEARCH_KEY);
   deleteArrItem(arr, val);
-
-  window.dispatchEvent(new CustomEvent('local-storage', { detail: { key: HISTORY_SEARCH_KEY } }));
   storage.set(HISTORY_SEARCH_KEY, arr);
+  window.dispatchEvent(new CustomEvent('local-storage', { detail: { key: HISTORY_SEARCH_KEY } }));
 };
 
 export const setHistory = (value: string) => {
