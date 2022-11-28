@@ -29,12 +29,14 @@ const BookSearchBar: React.FC = React.memo(() => {
   const onChange = (value: string) => {
     if (!value) {
       removeUrlParams(['keyword'], '/search');
+      dispatch(searchActions.setSearchKeyword(''));
       dispatch(searchActions.setSearchMode(false));
     }
   };
 
   const onClear = () => {
     removeUrlParams(['keyword'], '/search');
+    dispatch(searchActions.setSearchKeyword(''));
     dispatch(searchActions.setSearchMode(false));
   };
 
