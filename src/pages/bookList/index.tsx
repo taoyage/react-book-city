@@ -48,7 +48,7 @@ const BookList: React.FC = React.memo(() => {
           <Grid columns={1} gap={px2rem(24)}>
             {data.map((item) => {
               return item.bookList.map((book) => (
-                <Grid.Item key={book.bookId}>
+                <Grid.Item key={book.bookId} onClick={() => navigate(`/book/${book.bookId}`)}>
                   <Space gap={px2rem(12)}>
                     <BookCover src={book.coverImg} alt={book.title} />
                     <Space direction="vertical" justify="between" gap={px2rem(12)}>

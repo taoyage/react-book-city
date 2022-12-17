@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { NavBar, Popup, Space } from '@taoyage/react-mobile-ui';
 
 import { useAppSelector } from '@/store';
@@ -10,16 +10,14 @@ import styles from './index.module.scss';
 
 const ChapterHeader: React.FC = React.memo(() => {
   const navigate = useNavigate();
-  const params = useParams();
   const headerVisible = useAppSelector<boolean>((state) => state.chapter.headerVisible);
 
   const onGoHome = () => {
     navigate('/');
   };
 
-  const onGoDetail = () => {
-    const bookId: string = params.bookId as string;
-    navigate(`/book/${bookId}`);
+  const onBack = () => {
+    navigate(-1);
   };
 
   const onShelf = () => {};
@@ -38,7 +36,7 @@ const ChapterHeader: React.FC = React.memo(() => {
   return (
     <div className={styles.header}>
       <Popup position="top" visible={headerVisible} mask={false}>
-        <NavBar right={rightRender()} onBack={onGoDetail} />
+        <NavBar right={rightRender()} onBack={onBack} />
       </Popup>
     </div>
   );

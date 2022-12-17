@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { NavBar, ErrorBlock, Grid, Space } from '@taoyage/react-mobile-ui';
 
+import api from '@/pages/category/api';
 import { ICategory } from '@/pages/category/types';
 import { BookCover, Loading } from '@/components';
 import { useRequest } from '@/hooks/useRequest';
@@ -12,7 +13,7 @@ import styles from './index.module.scss';
 
 const Category: React.FC = React.memo(() => {
   const navigate = useNavigate();
-  const { data, error } = useRequest<ICategory[]>({ url: '/api/v1/category' });
+  const { data, error } = useRequest<ICategory[]>({ url: api.category });
 
   const onBack = React.useCallback(() => {
     navigate(-1);

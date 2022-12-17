@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Space } from '@taoyage/react-mobile-ui';
 
 import BookCover from '@/components/bookCover';
@@ -11,9 +11,16 @@ interface BookCatalogListProps {
   imgUrl: string;
   title: string;
   author: string;
+  bookId: string;
 }
 
 const BookCatalogList: React.FC<BookCatalogListProps> = React.memo((props) => {
+  const navigate = useNavigate();
+
+  const onGoChapter = (chapterIndex: number) => {
+    navigate(`/book/${props.bookId}/${chapterIndex + 1}`);
+  };
+
   return (
     <div className={styles.catalogList}>
       <div className={styles.header}>
@@ -26,10 +33,10 @@ const BookCatalogList: React.FC<BookCatalogListProps> = React.memo((props) => {
         </Space>
       </div>
       <div className={styles.content}>
-        {props.catalogList.map((item) => (
-          <Link key={item} className={styles.catalogItem} to="/">
+        {props.catalogList.map((item, index) => (
+          <div key={item} className={styles.catalogItem} onClick={() => onGoChapter(index)}>
             {item}
-          </Link>
+          </div>
         ))}
       </div>
     </div>

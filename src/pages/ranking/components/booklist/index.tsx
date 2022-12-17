@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '@/pages/ranking/api';
 
 import { useRequest } from '@/hooks/useRequest';
@@ -17,6 +18,7 @@ interface RankingBookListProps {
 }
 
 const RankingBookList: React.FC<RankingBookListProps> = React.memo((props) => {
+  const navigate = useNavigate();
   const { data, error } = useRequest<IBookInfo[]>({
     url: api.getBookList({ gender: props.gender, key: props.id }),
   });
@@ -33,7 +35,7 @@ const RankingBookList: React.FC<RankingBookListProps> = React.memo((props) => {
     <div className={styles.rankingBookList}>
       <Grid columns={1} gap={px2rem(24)}>
         {data?.map((book) => (
-          <Grid.Item key={book.bookId}>
+          <Grid.Item key={book.bookId} onClick={() => navigate(`/book/${book.bookId}`)}>
             <Space gap={px2rem(12)}>
               <BookCover src={book.coverImg} alt={book.title} />
               <Space direction="vertical" justify="between" gap={px2rem(12)}>

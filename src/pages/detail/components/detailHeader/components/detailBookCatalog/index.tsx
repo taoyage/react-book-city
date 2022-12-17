@@ -50,6 +50,7 @@ const DetailBookCatalog: React.FC = React.memo(() => {
           author={data!.author}
           title={data!.title}
           imgUrl={data!.coverImg}
+          bookId={data!.bookId}
         />
       </Popup>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import cx from 'classnames';
 import { ErrorBlock, Grid, Space } from '@taoyage/react-mobile-ui';
 
@@ -13,6 +14,7 @@ import { useAppSelector } from '@/store';
 import styles from './index.module.scss';
 
 const SearchList: React.FC = React.memo(() => {
+  const navigate = useNavigate();
   const searchKeyword = useAppSelector<string>((state) => state.search.searchKeyword);
   const searchMode = useAppSelector<boolean>((state) => state.search.searchMode);
 
@@ -28,12 +30,6 @@ const SearchList: React.FC = React.memo(() => {
     }
   }, [mutate, searchKeyword]);
 
-  React.useEffect(() => {
-    return () => {
-      console.log(123);
-    };
-  }, []);
-
   if (error && searchMode) {
     return <ErrorBlock />;
   }
@@ -46,7 +42,7 @@ const SearchList: React.FC = React.memo(() => {
     <div className={cx(styles.searchList, { [styles.hidden]: !searchMode })}>
       <Grid columns={1} gap={px2rem(24)}>
         {data?.map((book) => (
-          <Grid.Item key={book.bookId}>
+          <Grid.Item key={book.bookId} onClick={() => navigate(`/book/${book.bookId}`)}>
             <Space gap={px2rem(12)}>
               <BookCover src={book.coverImg} alt={book.title} />
               <Space direction="vertical" justify="between" gap={px2rem(12)}>

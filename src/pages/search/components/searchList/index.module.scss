@@ -1,3 +1,5 @@
+@import '@/assets/styles/mixin.scss';
+
 .searchList {
   padding: 16px;
   overflow: hidden;
@@ -8,18 +10,18 @@
   }
 
   .bookName {
-    font-size: $font-size-medium-x;
+    font-size: var(--ygm-font-size-x);
     @include no-wrap();
   }
 
   .meta {
-    font-size: $font-size-small;
+    font-size: var(--ygm-font-size-s);
     color: #a1aab3;
     @include no-wrap();
   }
 
   .desc {
-    font-size: $font-size-medium;
+    font-size: var(--ygm-font-size-m);
     line-height: 18px;
     color: #a1aab3;
     @include wrap(2);

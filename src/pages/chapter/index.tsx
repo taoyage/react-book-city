@@ -22,7 +22,7 @@ const Chapter: React.FC = React.memo(() => {
   const { reducers } = React.useMemo(() => createReducer('chapter'), []);
   useReducer(reducers);
 
-  if (error) {
+  if (error || (data && !data[0])) {
     return <ErrorBlock />;
   }
 
