@@ -13,7 +13,7 @@ const configStore = (reducers: IReducers, middleware: Middleware[]) => {
   // 初始化store
   const internalStore = configureStore({
     reducer: reducerManager.reduce,
-    middleware: middleware,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
   });
 
   type TStore = typeof internalStore;

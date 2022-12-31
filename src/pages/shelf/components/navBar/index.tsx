@@ -17,6 +17,7 @@ const Header: React.FC = React.memo(() => {
   };
 
   const onEdit = () => {
+    dispatch(shelfActions.clearSelectedBook([]));
     dispatch(shelfActions.setEditMode(!editMode));
   };
 

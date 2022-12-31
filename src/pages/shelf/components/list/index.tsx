@@ -1,38 +1,36 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Grid, Space } from '@taoyage/react-mobile-ui';
+import { Grid } from '@taoyage/react-mobile-ui';
 
-import { BookCover } from '@/components';
+import useReadLocalStorage from '@/hooks/useReadLocalStorage';
 
+import GroupList from '@/pages/shelf/components/list/components/groupList';
+import BookList from '@/pages/shelf/components/list/components/bookList';
+
+import { useAppSelector } from '@/store';
 import { IBookInfo } from '@/types/book';
-import { getShelfList } from '@/utils/shelf';
 import { px2rem } from '@/utils/unit';
 
 import styles from './index.module.scss';
 
 const List: React.FC = React.memo(() => {
   const navigate = useNavigate();
+  const bookList = useReadLocalStorage<IBookInfo[]>('shelf') || [];
 
-  const [list, _] = React.useState<IBookInfo[]>(getShelfList());
-
-  const renderContent = () => {
-    return list.map((book) => (
-      <React.Fragment key={book.bookId}>
-        <Grid.Item onClick={() => navigate(`/book/${book.bookId}`)}>
-          <BookCover src={book.coverImg} alt={book.title} style={{ '--width': px2rem(74), '--height': px2rem(100) }} />
-          <Space direction="vertical" gap={px2rem(6)}>
-            <div className={styles.bookName}>{book.title}</div>
-            <div className={styles.author}>{book.author}</div>
-          </Space>
-        </Grid.Item>
-      </React.Fragment>
-    ));
-  };
+  const editMode = useAppSelector<boolean>((state) => state.shelf.editMode);
 
   return (
     <div className={styles.list}>
-      <Grid columns={4} gap={px2rem(16)}>
-        {renderContent()}
+      <Grid columns={3} gap={px2rem(20)}>
+        <GroupList />
+        <BookList bookList={bookList} />
+        {!editMode && (
+          <Grid.Item onClick={() => navigate('/')}>
+            <div className={styles.addBook}>
+              <i className="icon-add" />
+            </div>
+          </Grid.Item>
+        )}
       </Grid>
     </div>
   );

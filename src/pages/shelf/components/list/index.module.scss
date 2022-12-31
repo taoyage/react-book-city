@@ -1,16 +1,17 @@
 .list {
-  padding: 16px;
+  padding: var(--ygm-padding-xl);
+  font-size: var(--ygm-font-size-m);
 
-  .author {
-    font-size: var(--ygm-font-size-s);
-    color: #969ba3;
-  }
-
-  .bookName {
-    width: 69px;
-    line-height: 16px;
-    margin-top: 5px;
-    font-size: var(--ygm-font-size-m);
-    @include wrap(2);
+  .addBook {
+    width: 96px;
+    height: 130px;
+    border: 1px solid var(--ygm-color-border);
+    color: var(--ygm-color-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--ygm-font-size-xxxl);
+    border-radius: var(--ygm-radius-m);
+    box-sizing: border-box;
   }
 }

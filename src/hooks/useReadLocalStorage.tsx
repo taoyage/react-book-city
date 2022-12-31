@@ -20,7 +20,6 @@ const useReadLocalStorage = <T,>(key: string): Value<T> => {
 
   const handleStorageChange = React.useCallback(
     (event: Event) => {
-      console.log(event);
       if ((event as CustomEvent).detail.key && (event as CustomEvent).detail.key !== key) {
         return;
       }
