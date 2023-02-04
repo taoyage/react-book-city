@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Space, Popup } from '@taoyage/react-mobile-ui';
 
 import BookCatalogList from '@/components/bookCatalogList';
@@ -11,6 +11,7 @@ import { IBookInfo } from '@/types/book';
 import styles from './index.module.scss';
 
 const DetailBookCatalog: React.FC = React.memo(() => {
+  const navigate = useNavigate();
   const [visible, setVisible] = React.useState<boolean>(false);
 
   const { data } = useRequest<IBookInfo>({ url: api.getBook(useParams().id as string) });
@@ -25,6 +26,10 @@ const DetailBookCatalog: React.FC = React.memo(() => {
 
   const onShow = () => {
     setVisible(true);
+  };
+
+  const onClickChapter = (chapter: number) => {
+    navigate(`/book/${data!.bookId}/${chapter}`);
   };
 
   return (
@@ -51,6 +56,7 @@ const DetailBookCatalog: React.FC = React.memo(() => {
           title={data!.title}
           imgUrl={data!.coverImg}
           bookId={data!.bookId}
+          onClickChapter={onClickChapter}
         />
       </Popup>
     </div>

@@ -1,10 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+import { ErrorBlock } from '@taoyage/react-mobile-ui';
 
 import { chapterActions } from '@/pages/chapter/store';
 import { NIGHT_THEME, NIGHT_THEME_TEXT_COLOR } from '@/pages/chapter/constants';
 import api from '@/pages/chapter/api';
 
+import Loading from '@/components/loading';
 import { useInfiniteRequest } from '@/hooks/useRequest';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { IChapterInfo } from '@/types/book';
@@ -13,6 +15,7 @@ import styles from './index.module.scss';
 
 const ChapterContent: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
+  const location = useLocation();
   const { bookId, chapterId } = useParams();
 
   const headerVisible = useAppSelector<boolean>((state) => state.chapter.headerVisible);
@@ -21,7 +24,7 @@ const ChapterContent: React.FC = React.memo(() => {
   const fontSize = useAppSelector<number>((state) => state.chapter.fontSize);
   const nightTheme = useAppSelector<boolean>((state) => state.chapter.nightTheme);
 
-  const { data } = useInfiniteRequest<IChapterInfo[]>({
+  const { error, data } = useInfiniteRequest<IChapterInfo[]>({
     url: api.getChapter(bookId as string, chapterId as string),
   });
 
@@ -41,6 +44,14 @@ const ChapterContent: React.FC = React.memo(() => {
       </div>
     );
   };
+
+  if (error || (data && !data[0])) {
+    return <ErrorBlock />;
+  }
+
+  if (!data) {
+    return <Loading />;
+  }
 
   return (
     <div

@@ -12,13 +12,14 @@ interface BookCatalogListProps {
   title: string;
   author: string;
   bookId: string;
+  onClickChapter?: (chapter: number) => void;
 }
 
 const BookCatalogList: React.FC<BookCatalogListProps> = React.memo((props) => {
   const navigate = useNavigate();
 
-  const onGoChapter = (chapterIndex: number) => {
-    navigate(`/book/${props.bookId}/${chapterIndex + 1}`);
+  const onGoChapter = async (chapterIndex: number) => {
+    props?.onClickChapter?.(chapterIndex + 1);
   };
 
   return (

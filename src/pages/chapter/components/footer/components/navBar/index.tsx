@@ -21,12 +21,16 @@ const NavBar: React.FC = React.memo(() => {
     dispatch(chapterActions.setNightTheme(!nightTheme));
   };
 
+  const onCatalog = () => {
+    dispatch(chapterActions.setCatalogVisible(true));
+  };
+
   return (
     <Popup position="bottom" visible={footerNavBarVisible} mask={false}>
       <div className={styles.navBar}>
         <Grid columns={4}>
           <Grid.Item>
-            <div className={styles.item}>
+            <div className={styles.item} onClick={onCatalog}>
               <div className={styles.icon}>
                 <i className="icon-catalog" />
               </div>

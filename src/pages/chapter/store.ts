@@ -7,6 +7,7 @@ interface IChapterActions {
   setHeaderVisible: ActionCreatorWithPayload<boolean, string>;
   setFooterNavBarVisible: ActionCreatorWithPayload<boolean, string>;
   setFooterSettingBarVisible: ActionCreatorWithPayload<boolean, string>;
+  setCatalogVisible: ActionCreatorWithPayload<boolean, string>;
   setTheme: ActionCreatorWithPayload<string, string>;
   setFontSize: ActionCreatorWithPayload<number, string>;
   setNightTheme: ActionCreatorWithPayload<boolean, string>;
@@ -16,6 +17,7 @@ export const chapterActions: IChapterActions = {
   setHeaderVisible: createAction('INIT'),
   setFooterNavBarVisible: createAction('INIT'),
   setFooterSettingBarVisible: createAction('INIT'),
+  setCatalogVisible: createAction('INIT'),
   setTheme: createAction('INIT'),
   setFontSize: createAction('INIT'),
   setNightTheme: createAction('INIT'),
@@ -33,6 +35,9 @@ export const createReducer = (key: string) => {
     false,
     key
   );
+
+  const { set: setCatalogVisible, reducer: catalogVisible } = createTempSlice<boolean>('catalogVisible', false, key);
+
   const { set: setTheme, reducer: theme } = createTempSlice<string>('theme', THEME[DEFAULT_THEME_INDEX], key);
   const { set: setFontSize, reducer: fontSize } = createTempSlice<number>('fontSize', DEFAULT_FONT_SIZE, key);
   const { set: setNightTheme, reducer: nightTheme } = createTempSlice<boolean>('nightTheme', false, key);
@@ -40,6 +45,7 @@ export const createReducer = (key: string) => {
   chapterActions.setHeaderVisible = setHeaderVisible;
   chapterActions.setFooterNavBarVisible = setFooterNavBarVisible;
   chapterActions.setFooterSettingBarVisible = setFooterSettingBarVisible;
+  chapterActions.setCatalogVisible = setCatalogVisible;
   chapterActions.setTheme = setTheme;
   chapterActions.setFontSize = setFontSize;
   chapterActions.setNightTheme = setNightTheme;
@@ -50,6 +56,7 @@ export const createReducer = (key: string) => {
         headerVisible,
         footerNavBarVisible,
         footerSettingBarVisible,
+        catalogVisible,
         theme,
         fontSize,
         nightTheme,
