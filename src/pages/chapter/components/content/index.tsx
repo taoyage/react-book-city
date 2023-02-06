@@ -67,7 +67,10 @@ const ChapterContent: React.FC = React.memo(() => {
   };
 
   React.useEffect(() => {
-    contentRef.current!.scrollTop = 0;
+    const element = contentRef.current;
+    if (!element) return;
+
+    element.scrollTop = 0;
   }, [chapterId]);
 
   if (!chapters) {
