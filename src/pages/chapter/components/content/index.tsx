@@ -45,7 +45,7 @@ const ChapterContent: React.FC = React.memo(() => {
 
   const renderChapter = (chapterInfo: IChapterInfo) => {
     return (
-      <div key={chapterInfo.chapterId} data-id={chapterInfo.chapterIndex} ref={contentRef}>
+      <div key={chapterInfo.chapterId} data-id={chapterInfo.chapterIndex}>
         <h1>{chapterInfo.chapterName}</h1>
         {chapterInfo.content.map((item) => {
           return <p key={item}>{item}</p>;
@@ -66,6 +66,10 @@ const ChapterContent: React.FC = React.memo(() => {
     navigate(`/book/${bookId}/${Number(chapterId) + 1}`, { replace: true });
   };
 
+  React.useEffect(() => {
+    contentRef.current!.scrollTop = 0;
+  }, [chapterId]);
+
   if (!chapters) {
     return <Loading />;
   }
@@ -77,6 +81,7 @@ const ChapterContent: React.FC = React.memo(() => {
   return (
     <div
       className={styles.content}
+      ref={contentRef}
       onClick={onContent}
       style={{
         background: nightTheme ? NIGHT_THEME : theme,
