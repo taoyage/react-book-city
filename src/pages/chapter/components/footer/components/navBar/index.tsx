@@ -21,6 +21,10 @@ const NavBar: React.FC = React.memo(() => {
     dispatch(chapterActions.setNightTheme(!nightTheme));
   };
 
+  const onProgress = () => {
+    dispatch(chapterActions.setFooterProgressBarVisible(true));
+  };
+
   const onCatalog = () => {
     dispatch(chapterActions.setCatalogVisible(true));
   };
@@ -39,7 +43,7 @@ const NavBar: React.FC = React.memo(() => {
           </Grid.Item>
 
           <Grid.Item>
-            <div className={styles.item}>
+            <div className={styles.item} onClick={onProgress}>
               <div className={styles.icon}>
                 <i className="icon-progress" />
               </div>

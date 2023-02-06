@@ -14,7 +14,7 @@ export interface IBookInfo {
 
 export interface IChapterInfo {
   chapterId: string;
-  chapterIndex: number;
+  chapterIndex: string;
   chapterName: string;
   content: string[];
 }

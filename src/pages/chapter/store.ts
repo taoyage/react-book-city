@@ -7,6 +7,7 @@ interface IChapterActions {
   setHeaderVisible: ActionCreatorWithPayload<boolean, string>;
   setFooterNavBarVisible: ActionCreatorWithPayload<boolean, string>;
   setFooterSettingBarVisible: ActionCreatorWithPayload<boolean, string>;
+  setFooterProgressBarVisible: ActionCreatorWithPayload<boolean, string>;
   setCatalogVisible: ActionCreatorWithPayload<boolean, string>;
   setTheme: ActionCreatorWithPayload<string, string>;
   setFontSize: ActionCreatorWithPayload<number, string>;
@@ -17,6 +18,7 @@ export const chapterActions: IChapterActions = {
   setHeaderVisible: createAction('INIT'),
   setFooterNavBarVisible: createAction('INIT'),
   setFooterSettingBarVisible: createAction('INIT'),
+  setFooterProgressBarVisible: createAction('INIT'),
   setCatalogVisible: createAction('INIT'),
   setTheme: createAction('INIT'),
   setFontSize: createAction('INIT'),
@@ -36,6 +38,12 @@ export const createReducer = (key: string) => {
     key
   );
 
+  const { set: setFooterProgressBarVisible, reducer: footerProgressBarVisible } = createTempSlice<boolean>(
+    'footerProgressBarVisible',
+    false,
+    key
+  );
+
   const { set: setCatalogVisible, reducer: catalogVisible } = createTempSlice<boolean>('catalogVisible', false, key);
 
   const { set: setTheme, reducer: theme } = createTempSlice<string>('theme', THEME[DEFAULT_THEME_INDEX], key);
@@ -45,6 +53,7 @@ export const createReducer = (key: string) => {
   chapterActions.setHeaderVisible = setHeaderVisible;
   chapterActions.setFooterNavBarVisible = setFooterNavBarVisible;
   chapterActions.setFooterSettingBarVisible = setFooterSettingBarVisible;
+  chapterActions.setFooterProgressBarVisible = setFooterProgressBarVisible;
   chapterActions.setCatalogVisible = setCatalogVisible;
   chapterActions.setTheme = setTheme;
   chapterActions.setFontSize = setFontSize;
@@ -56,6 +65,7 @@ export const createReducer = (key: string) => {
         headerVisible,
         footerNavBarVisible,
         footerSettingBarVisible,
+        footerProgressBarVisible,
         catalogVisible,
         theme,
         fontSize,

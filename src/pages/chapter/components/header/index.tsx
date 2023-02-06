@@ -20,14 +20,11 @@ const ChapterHeader: React.FC = React.memo(() => {
     navigate(-1);
   };
 
-  const onShelf = () => {};
-
   const rightRender = () => {
     return (
       <div className={styles.icons}>
         <Space justify="end" gap={px2rem(20)}>
           <i className="icon-home" onClick={onGoHome} />
-          <i className="icon-shelf" onClick={onShelf} />
         </Space>
       </div>
     );

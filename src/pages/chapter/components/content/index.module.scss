@@ -19,4 +19,11 @@
     line-height: 33px;
     text-indent: 2em;
   }
+
+  .pagination {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
