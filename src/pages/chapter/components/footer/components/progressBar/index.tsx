@@ -41,6 +41,10 @@ const ProgressBar: React.FC = React.memo(() => {
     navigate(`/book/${bookId}/${currentPageIndex + 1}`, { replace: true });
   };
 
+  React.useEffect(() => {
+    setCurrentPageIndex(Number(chapterId));
+  }, [chapterId]);
+
   return (
     <Popup position="bottom" visible={footerProgressBarVisible} mask={false}>
       <div className={styles.progress}>
