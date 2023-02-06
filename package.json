@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
-    "@taoyage/react-mobile-ui": "^1.8.6",
+    "@taoyage/react-mobile-ui": "^1.8.7",
     "axios": "^0.27.2",
     "classnames": "^2.3.2",
     "query-string": "^7.1.1",
