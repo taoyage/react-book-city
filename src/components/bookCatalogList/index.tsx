@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Space } from '@taoyage/react-mobile-ui';
 
 import BookCover from '@/components/bookCover';
@@ -16,8 +15,6 @@ interface BookCatalogListProps {
 }
 
 const BookCatalogList: React.FC<BookCatalogListProps> = React.memo((props) => {
-  const navigate = useNavigate();
-
   const onGoChapter = async (chapterIndex: number) => {
     props?.onClickChapter?.(chapterIndex + 1);
   };

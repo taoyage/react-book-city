@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import cx from 'classnames';
 import { ErrorBlock, Button } from '@taoyage/react-mobile-ui';
 
 import { chapterActions } from '@/pages/chapter/store';
@@ -28,11 +27,7 @@ const ChapterContent: React.FC = React.memo(() => {
   const contentRef = React.useRef<HTMLDivElement>(null);
 
   const { data } = useRequest<IBookInfo>({ url: api.getBook(bookId as string) });
-  const {
-    error,
-    data: chapters,
-    isValidating,
-  } = useRequest<IChapterInfo[]>({
+  const { error, data: chapters } = useRequest<IChapterInfo[]>({
     url: api.getChapter(bookId as string, chapterId as string),
   });
 
@@ -61,7 +56,6 @@ const ChapterContent: React.FC = React.memo(() => {
 
   const onPrev = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
-    console.log(isFirst);
     if (isFirst) return;
     navigate(`/book/${bookId}/${Number(chapterId) - 1}`, { replace: true });
   };
