@@ -5,6 +5,7 @@
   overflow: hidden;
   overflow-y: auto;
   box-sizing: border-box;
+  font-size: var(--ygm-font-size-m);
   &.hidden {
     display: none;
   }
